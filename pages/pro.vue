@@ -1,0 +1,70 @@
+<template>
+  <div class="page-index">
+    <div class="container">
+      pro page
+      <BlogSection :blogs="blogs" />
+      bye
+    </div>
+  </div>
+</template>
+
+<script>
+import BlogSection from '~/components/Sections/BlogSection'
+
+import blogsEn from '~/contents/en/blogsEn.js'
+import blogsFa from '~/contents/fa/blogsFa.js'
+
+export default {
+  components: { BlogSection },
+  asyncData({ app }) {
+    const blogs = app.i18n.locale === 'fa' ? blogsFa : blogsEn
+
+    async function asyncImport(blogName) {
+      const wholeMD = await import(
+        `~/contents/${app.i18n.locale}/blog/${blogName}.md`
+      )
+      return wholeMD.attributes
+    }
+
+    return Promise.all(blogs.map((blog) => asyncImport(blog))).then((res) => {
+      return {
+        blogs: res
+      }
+    })
+  },
+
+  transition: {
+    name: 'slide-fade'
+  },
+
+  computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
+    ogImage() {}
+  },
+
+  head() {
+    return {
+      title: this.$t('indexPageHead.title'),
+      htmlAttrs: {
+        lang: this.$i18n.locale
+      },
+      meta: [
+        { name: 'author', content: 'Art Mary' },
+        {
+          name: 'description',
+          property: 'og:description',
+          content: this.$t('indexPageHead.description'),
+          hid: 'description'
+        },
+        { property: 'og:title', content: this.$t('indexPageHead.title') },
+        { property: 'og:image', content: this.ogImage },
+        {
+          name: 'twitter:description',
+          content: this.$t('indexPageHead.description')
+        },
+        { name: 'twitter:image', content: this.ogImage }
+      ]
+    }
+  }
+}
+</script>
