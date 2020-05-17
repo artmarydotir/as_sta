@@ -12,7 +12,10 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest",
     "copy:font": "rm -rf static/fonts && mkdir -p static/fonts && cp -r node_modules/@aasaam/noto-font/dist/* static/fonts",
-    "info": "node scripts/i18n.js"
+    "copy:favicons": "rm -rf static/favicons && mkdir -p static/favicons && cp -r node_modules/@aasaam/information/logo/icons/* static/favicons",
+    "copy:humans": "rm -rf static/humans.txt && cp -r node_modules/@aasaam/information/info/humans.txt static/humans.txt",
+    "info": "node scripts/i18n.js",
+    "manifest": "node scripts/manifest.js"
   },
   "lint-staged": {
     "*.{js,vue}": "npm run lint"
@@ -23,32 +26,32 @@
     }
   },
   "dependencies": {
-    "markdown-it": "^10.0",
     "@aasaam/information": "^0",
     "@aasaam/noto-font": "^0",
-    "@nuxtjs/axios": "^5.3",
+    "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/dotenv": "^1.4",
+    "markdown-it": "^10.0",
     "normalize.css": "^8.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.0",
     "nuxt-i18n": "^6.11",
     "nuxt-webfontloader": "^1.1"
   },
   "devDependencies": {
-    "frontmatter-markdown-loader": "^3",
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-prettier": "^6.10",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.0.0",
-    "jest": "^24.1.0",
-    "lint-staged": "^10.0.0",
-    "node-sass": "^4.14.0",
-    "prettier": "^1.19.1",
+    "frontmatter-markdown-loader": "^3",
+    "husky": "^4.0",
+    "jest": "^24.1",
+    "lint-staged": "^10.0",
+    "node-sass": "^4.14.1",
+    "prettier": "^1.19",
     "sass-loader": "^8.0.2",
     "vue-jest": "^4.0.0-0"
   }

@@ -59,7 +59,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  // plugins: ['locales/trans.js'],
+  // plugins: ['config/head.js'],
   /*
    ** Nuxt.js dev-modules
    */
