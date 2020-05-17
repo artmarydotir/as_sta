@@ -10,7 +10,6 @@ export default {
     console.log(i18nSeo)
     return {
       htmlAttrs: {
-        myAttribute: 'My Value',
         ...i18nSeo.htmlAttrs
       },
       meta: [
@@ -21,15 +20,7 @@ export default {
         },
         ...i18nSeo.meta
       ],
-      link: [
-        {
-          hid: 'apple-touch-icon',
-          rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: '/apple-touch-icon.png'
-        },
-        ...i18nSeo.link
-      ]
+      link: [...i18nSeo.link]
     }
   }
 }

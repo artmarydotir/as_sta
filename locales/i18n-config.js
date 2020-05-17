@@ -19,5 +19,5 @@ export const I18N = {
   seo: false,
   langDir: '/locales/',
   defaultLocale: 'fa',
-  parsePages: false
+  parsePages: true
 }
