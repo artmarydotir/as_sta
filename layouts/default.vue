@@ -7,70 +7,74 @@
 export default {
   head() {
     const i18nSeo = this.$nuxtI18nSeo()
-    console.log(i18nSeo)
     return {
+      title: this.$t('head.title'),
       htmlAttrs: {
+        lang: this.$i18n.locale,
         ...i18nSeo.htmlAttrs
       },
       meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'theme-color', content: '#4285f4' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
+        { name: 'subject', content: this.$t('head.name') },
+        { name: 'keywords', content: ['HTML', 'css'] },
+        //  Geo tags
         {
-          hid: 'description',
-          name: 'description',
-          content: 'My Custom Description'
+          name: 'ICBM',
+          content: `${this.$t('head.location.latitude')}, ${this.$t(
+            'head.location.longitude'
+          )}`
         },
+        {
+          name: 'geo.position',
+          content: `${this.$t('head.location.latitude')};${this.$t(
+            'head.location.longitude'
+          )}`
+        },
+        { name: 'geo.region', content: 'IR-07' },
+        { name: 'geo.placename', content: 'Tehran' },
+        // og & twitter & global meta
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: this.$t('head.title') },
+        { property: 'og:image', content: this.ogImage },
+        { property: 'og:image:alt', content: this.$t('head.description') },
+        { property: 'og:url', content: 'https://aasaam.com' },
+        {
+          name: 'description',
+          property: 'og:description',
+          content: this.$t('head.description'),
+          hid: 'description'
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary'
+        },
+        {
+          name: 'twitter:site',
+          content: '@aasaaminfo'
+        },
+        {
+          name: 'twitter:url',
+          content: 'https://aasaam.com'
+        },
+        {
+          name: 'twitter:title',
+          content: this.$t('head.title')
+        },
+        {
+          name: 'twitter:description',
+          content: this.$t('head.description')
+        },
+        { name: 'twitter:image', content: this.ogImage },
         ...i18nSeo.meta
       ],
-      link: [...i18nSeo.link]
+      link: [
+        { rel: 'manifest', href: `manifest-${this.$i18n.locale}.json` },
+        ...i18nSeo.link
+      ]
     }
   }
 }
 </script>
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>

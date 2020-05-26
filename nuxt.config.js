@@ -3,7 +3,6 @@ import fs from 'fs'
 import MarkdownIt from 'markdown-it'
 import FMMode from 'frontmatter-markdown-loader/mode'
 import { I18N } from './locales/i18n-config'
-// import { Head } from './config/head'
 
 function getMdPath(lang, type) {
   let initLang = lang
@@ -29,9 +28,74 @@ export default {
   /*
    ** Headers of the page
    */
-  // head: {
-  //   Head
-  // },
+  head: {
+    link: [
+      { rel: 'author', href: 'humans.txt' },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicons/favicon.ico'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/favicon-16.png',
+        sizes: '16x16'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/favicon-32.png',
+        sizes: '32x32'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-36.png',
+        sizes: '36x36'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-48.png',
+        sizes: '48x48'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-72.png',
+        sizes: '72x72'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-144.png',
+        sizes: '144x144'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-192.png',
+        sizes: '192x192'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-256.png',
+        sizes: '256x256'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicons/android-chrome-512.png',
+        sizes: '512x512'
+      },
+      {
+        rel: 'apple-touch-icon',
+        href: '/favicons/apple-touch-icon.png'
+      }
+    ]
+  },
   // head: {
   //   title: this.$i18n('head.title'),
   //   meta: [
@@ -59,7 +123,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  // plugins: ['config/head.js'],
+  plugins: ['~/plugins/jsonld'],
   /*
    ** Nuxt.js dev-modules
    */
