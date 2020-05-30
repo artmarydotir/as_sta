@@ -1,24 +1,24 @@
-import path from 'path'
-import fs from 'fs'
-import MarkdownIt from 'markdown-it'
-import FMMode from 'frontmatter-markdown-loader/mode'
-import { I18N } from './locales/i18n-config'
+import path from 'path';
+import fs from 'fs';
+import MarkdownIt from 'markdown-it';
+import FMMode from 'frontmatter-markdown-loader/mode';
+import { I18N } from './locales/i18n-config';
 
 function getMdPath(lang, type) {
-  let initLang = lang
+  let initLang = lang;
   if (lang === 'fa') {
-    initLang = ''
+    initLang = '';
   }
   return fs
     .readdirSync(path.resolve(__dirname, 'contents', `${lang}/${type}`))
     .filter((filename) => path.extname(filename) === '.md')
-    .map((filename) => `${initLang}/${type}/${path.parse(filename).name}`)
+    .map((filename) => `${initLang}/${type}/${path.parse(filename).name}`);
 }
 
 const md = new MarkdownIt({
   html: true,
   typographer: true
-})
+});
 
 export default {
   mode: 'universal',
@@ -169,13 +169,13 @@ export default {
             root: 'markdown-body'
           },
           markdown(body) {
-            return md.render(body)
+            return md.render(body);
           }
         }
-      })
+      });
       config.node = {
         fs: 'empty'
-      }
+      };
     }
   },
   generate: {
@@ -184,4 +184,4 @@ export default {
       .concat(getMdPath('fa', 'blog/guide'))
       .concat(getMdPath('en', 'blog'))
   }
-}
+};

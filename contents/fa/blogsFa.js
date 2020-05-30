@@ -1,1 +1,1 @@
-export default ['bacon-ipsum', 'bacon-ipsum2', 'guide/hi']
+export default ['bacon-ipsum', 'bacon-ipsum2', 'guide/hi'];

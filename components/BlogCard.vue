@@ -19,6 +19,7 @@
 <script lang="js">
 export default {
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     blog: {
       type: Object,
     }

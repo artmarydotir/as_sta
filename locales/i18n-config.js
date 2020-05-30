@@ -20,4 +20,4 @@ export const I18N = {
   langDir: '/locales/',
   defaultLocale: 'fa',
   parsePages: true
-}
+};

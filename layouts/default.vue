@@ -6,7 +6,7 @@
 <script>
 export default {
   head() {
-    const i18nSeo = this.$nuxtI18nSeo()
+    const i18nSeo = this.$nuxtI18nSeo();
     return {
       title: this.$t('head.title'),
       htmlAttrs: {
@@ -74,7 +74,7 @@ export default {
         { rel: 'manifest', href: `manifest-${this.$i18n.locale}.json` },
         ...i18nSeo.link
       ]
-    }
+    };
   }
-}
+};
 </script>

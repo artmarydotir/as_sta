@@ -1,4 +1,4 @@
-import info from './info'
+import info from './info';
 
 export default {
   aasaamlink: info.url,
@@ -18,4 +18,4 @@ export default {
   comeBack: 'Come back',
   posts: 'Posts',
   home: 'Home'
-}
+};

@@ -162,4 +162,4 @@ export default {
       url: 'http://staff.aasaam.com/sara'
     }
   ]
-}
+};

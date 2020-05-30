@@ -1,1 +1,1 @@
-export default ['englishh']
+export default ['englishh'];

@@ -1,12 +1,12 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 
-const { Organization } = require('@aasaam/information')
+const { Organization } = require('@aasaam/information');
 
 // console.log(Organization)
 Object.keys(Organization).forEach((lang) => {
-  const d = Organization[lang]
-  const p = path.resolve(__dirname, `../static/manifest-${lang}.json`)
+  const d = Organization[lang];
+  const p = path.resolve(__dirname, `../static/manifest-${lang}.json`);
   const manifest = {
     name: `${d.name}`,
     short_name: `${d.legalName}`,
@@ -82,6 +82,6 @@ Object.keys(Organization).forEach((lang) => {
         href: '/favicons/apple-touch-icon.png'
       }
     ]
-  }
-  fs.writeFileSync(p, `${JSON.stringify(manifest, null, 2)}`)
-})
+  };
+  fs.writeFileSync(p, `${JSON.stringify(manifest, null, 2)}`);
+});

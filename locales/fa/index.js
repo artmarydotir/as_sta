@@ -1,4 +1,4 @@
-import info from './info'
+import info from './info';
 
 export default {
   head: {
@@ -17,4 +17,4 @@ export default {
   comeBack: 'بازگشت',
   posts: 'پست',
   home: 'خانه'
-}
+};

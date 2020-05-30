@@ -13,15 +13,16 @@
   </section>
 </template>
 <script>
-import BlogCard from '~/components/BlogCard.vue'
-import LangSwitcher from '~/components/LangSwitcher'
+import BlogCard from '~/components/BlogCard.vue';
+import LangSwitcher from '~/components/LangSwitcher';
 
 export default {
   components: { BlogCard, LangSwitcher },
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     blogs: {
       type: Array
     }
   }
-}
+};
 </script>

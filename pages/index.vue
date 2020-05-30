@@ -16,18 +16,21 @@
           {{ $t('legalName') }}
         </a>
         <p>سلام من صفحه نخستم. لطفا برای نمایش مارک دان ازینجا برو</p>
-        <nuxt-link to="pro">show md</nuxt-link>
+        <!-- <nuxt-link to="pro" target="blank">show md</nuxt-link> -->
+        <a href="/pro" target="_blank">
+          Mark down
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import faJSon from '~/locales/fa/info'
-import enJSon from '~/locales/en/info'
-import deJSon from '~/locales/de/info'
-import arJSon from '~/locales/ar/info'
+import Logo from '~/components/Logo.vue';
+import faJSon from '~/locales/fa/info';
+import enJSon from '~/locales/en/info';
+import deJSon from '~/locales/de/info';
+import arJSon from '~/locales/ar/info';
 
 export default {
   components: {
@@ -36,20 +39,19 @@ export default {
   computed: {
     structuredData() {
       if (this.$i18n.locale === 'en') {
-        return enJSon
+        return enJSon;
       }
       if (this.$i18n.locale === 'ar') {
-        return arJSon
+        return arJSon;
       }
       if (this.$i18n.locale === 'de') {
-        return deJSon
+        return deJSon;
       }
-      return faJSon
+      return faJSon;
     }
   },
   mounted() {
-    console.log(this.$i18n.locale)
-    // console.log(this.$tc('head.num'))
+    console.log(this.$i18n.locale);
   },
   head() {
     return {
@@ -60,12 +62,12 @@ export default {
         // TODO: ADD BLOG ARTICLE LINK LATER
         // { rel: 'index', href: 'https://example.com/article/' },
       ]
-    }
+    };
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;
