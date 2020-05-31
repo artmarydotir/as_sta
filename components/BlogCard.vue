@@ -1,6 +1,5 @@
 <template>
   <div>
-    heheee
     <li class="blog">
       <nuxt-link
         :to="localePath({ name: 'blog-slug', params: { slug: blog.name } })"
@@ -12,6 +11,9 @@
           {{ blog.description }}
         </p>
       </nuxt-link>
+      <span>
+        {{ blog.year }}
+      </span>
     </li>
   </div>
 </template>
@@ -26,3 +28,9 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+li {
+  border: 2px solid red;
+  margin: 0 12px;
+}
+</style>

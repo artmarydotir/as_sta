@@ -1,10 +1,6 @@
 <template>
   <section>
     <div class="blogs__top">
-      <div>
-        <h2>{{ $t('posts') }}</h2>
-        <span class="emoji-title emoji--writing" />
-      </div>
       <LangSwitcher />
     </div>
     <ul class="blogs">

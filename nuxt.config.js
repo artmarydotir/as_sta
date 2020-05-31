@@ -114,7 +114,7 @@ export default {
    */
   loading: { color: '#fff' },
   env: {
-    baseUrl: process.env.BASE_URL || 'aasaam.com'
+    baseUrl: process.env.BASE_URL || ''
   },
   /*
    ** Global CSS

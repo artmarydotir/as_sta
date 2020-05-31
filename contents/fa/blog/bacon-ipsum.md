@@ -1,8 +1,13 @@
 ---
 name: 'bacon-ipsum'
+trans: 'englishh'
 title: عنوان
 year: 28 May 2019
+color: '#edece7'
+noMainImage: true
+extraComponent: 'Datatable'
 id: 'bacon-ipsum'
+hero: /favicons/android-chrome-36.png
 description: اولتیماتوم هم به ولیعهد عربستان سعودی داده است. به گزارش 
 ---
 
