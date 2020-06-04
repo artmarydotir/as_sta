@@ -123,7 +123,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/jsonld'],
+  plugins: [
+    '~/plugins/jsonld',
+    // '~/plugins/lazyload',
+    '~/plugins/lazysizes.client.js'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -138,8 +142,16 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     'nuxt-webfontloader',
+    'nuxt-responsive-loader',
     ['nuxt-i18n', I18N]
   ],
+  responsiveLoader: {
+    name: 'images/[name]-[width].[ext]',
+    sizes: [320],
+    adapter: require('responsive-loader/sharp'),
+    placeholder: true,
+    quality: 45 // choose a lower value if you want to reduce filesize further
+  },
   webfontloader: {
     custom: {
       families: ['aasaam-Noto'],
@@ -158,21 +170,35 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
-      config.module.rules.push({
-        test: /\.md$/,
-        loader: 'frontmatter-markdown-loader',
-        include: path.resolve(__dirname, 'contents'),
-        options: {
-          mode: [FMMode.VUE_COMPONENT, FMMode.VUE_RENDER_FUNCTIONS],
-          vue: {
-            root: 'markdown-body'
-          },
-          markdown(body) {
-            return md.render(body);
+    extend(config, { isDev, isClient, loaders: { vue } }) {
+      if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src'];
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset'];
+      }
+      config.module.rules.push(
+        {
+          test: /\.md$/,
+          loader: 'frontmatter-markdown-loader',
+          include: path.resolve(__dirname, 'contents'),
+          options: {
+            mode: [FMMode.VUE_COMPONENT, FMMode.VUE_RENDER_FUNCTIONS],
+            vue: {
+              root: 'markdown-body'
+            },
+            markdown(body) {
+              return md.render(body);
+            }
+          }
+        },
+        {
+          test: /\.(gif|svg)$/,
+          loader: 'url-loader',
+          query: {
+            limit: 1000,
+            name: 'img/[name].[hash:7].[ext]'
           }
         }
-      });
+      );
       config.node = {
         fs: 'empty'
       };

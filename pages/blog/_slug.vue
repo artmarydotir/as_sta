@@ -18,6 +18,13 @@
             </h1>
             <p class="elevate-cover__description">{{ description }}</p>
             <hr />
+            <ImageResponsive
+              :image-u-r-l="hero"
+              width="40%"
+              height="100px"
+              class="elevate-cover__img"
+              :alt="'Blog picture'"
+            />
           </div>
         </div>
       </div>
@@ -36,9 +43,10 @@
 
 <script>
 import DynamicMarkdown from '~/components/Markdown/DynamicMarkdown.vue';
+import ImageResponsive from '~/components/Image.vue';
 
 export default {
-  components: { DynamicMarkdown },
+  components: { DynamicMarkdown, ImageResponsive },
   async asyncData({ params, app }) {
     console.log(params.slug);
     const fileContent = await import(

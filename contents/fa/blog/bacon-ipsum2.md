@@ -3,6 +3,7 @@ name: 'bacon-ipsum2'
 title: 2عنوان
 year: 28 May 2019
 id: 'bacon-ipsum'
+hero: aurora.jpg
 description: اولتیماتوم هم به ولیعهد عربستان سعودی داده است. به گزارش 
 ---
 

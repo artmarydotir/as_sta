@@ -15,7 +15,8 @@
     "copy:favicons": "rm -rf static/favicons && mkdir -p static/favicons && cp -r node_modules/@aasaam/information/logo/icons/* static/favicons",
     "copy:humans": "rm -rf static/humans.txt && cp -r node_modules/@aasaam/information/info/humans.txt static/humans.txt",
     "info": "node scripts/i18n.js",
-    "manifest": "node scripts/manifest.js"
+    "manifest": "node scripts/manifest.js",
+    "analyze": "nuxt build --analyze"
   },
   "lint-staged": {
     "*.{js,vue}": "npm run lint"
@@ -30,12 +31,15 @@
     "@aasaam/noto-font": "^0",
     "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/dotenv": "^1.4",
+    "lazysizes": "^5.2.2",
     "markdown-it": "^10.0",
     "normalize.css": "^8.0",
     "nuxt": "^2.0",
     "nuxt-i18n": "^6.11",
     "nuxt-jsonld": "^1.4.9",
-    "nuxt-webfontloader": "^1.1"
+    "nuxt-responsive-loader": "^2.0.1",
+    "nuxt-webfontloader": "^1.1",
+    "vue-lazyload": "^1.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
@@ -51,6 +55,7 @@
     "husky": "^4.0",
     "jest": "^24.1",
     "lint-staged": "^10.0",
+    "sharp": "^0.25.3",
     "node-sass": "^4.14.1",
     "prettier": "^1.19",
     "sass-loader": "^8.0.2",
