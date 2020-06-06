@@ -125,7 +125,7 @@ export default {
    */
   plugins: [
     '~/plugins/jsonld',
-    // '~/plugins/lazyload',
+    '~/plugins/global-components.js',
     '~/plugins/lazysizes.client.js'
   ],
   /*
