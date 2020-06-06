@@ -1,9 +1,10 @@
 <template>
+  <!-- this component is not ready do not use this-->
   <div>
     <img
-      :data-src="imageurl"
-      :data-srcset="srcset.srcSet"
-      :class="classes"
+      :src="imageRequired"
+      :srcset="imageRequired.srcSet"
+      class="lazyload"
       :alt="alt"
     />
   </div>
@@ -13,8 +14,9 @@
 export default {
   props: {
     // eslint-disable-next-line vue/require-default-prop
+    // eslint-disable-next-line vue/require-prop-types
     imageurl: {
-      type: String
+      required: true
     },
     // eslint-disable-next-line vue/require-default-prop
     srcset: {
@@ -24,22 +26,19 @@ export default {
       type: String,
       required: true
     },
+    // eslint-disable-next-line vue/require-default-prop
     classes: {
-      type: String,
-      default: 'lazyload'
-    },
-    rounded: {
-      type: Boolean,
-      default: false
+      type: String
     }
   },
   computed: {
-    imagePath() {
-      return `~/assets/images/${this.imageurl}`;
+    // eslint-disable-next-line vue/return-in-computed-property
+    imageRequired() {
+      return require(`~/assets/images/blog/${this.imageurl}`);
     },
-    imageSet() {
-      return require('~/assets/images/' + this.srcset);
-    },
+    // imageSet() {
+    //   return require('~/assets/images/' + this.srcset);
+    // },
     // imageRequired() {
 
     //   return require('images/blog/aurora.jpg');

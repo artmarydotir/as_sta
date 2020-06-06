@@ -1,13 +1,14 @@
 ---
 name: 'bacon-ipsum'
 trans: 'englishh'
-title: عنوان
+title: عنوان یک بدون عکس
 year: 28 May 2019
 color: '#edece7'
-noMainImage: true
 extraComponent: 'Datatable'
 id: 'bacon-ipsum'
-hero: aurora.jpg
+hero: ''
+default: aasaam.png
+hasImage: false
 description: اولتیماتوم هم به ولیعهد عربستان سعودی داده است. به گزارش 
 ---
 

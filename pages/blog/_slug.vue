@@ -18,13 +18,15 @@
             </h1>
             <p class="elevate-cover__description">{{ description }}</p>
             <hr />
-            <ImageResponsive
-              :image-u-r-l="hero"
-              width="40%"
-              height="100px"
-              class="elevate-cover__img"
-              :alt="'Blog picture'"
-            />
+            {{ hasimage }}
+            <div v-if="hasimage">
+              <img
+                :data-src="require(`~/assets/images/blog/${hero}`).src"
+                :data-srcset="require(`~/assets/images/blog/${hero}`).srcSet"
+                :alt="title"
+                class="lazyload"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -36,17 +38,15 @@
           :static-render-funcs="staticRenderFuncs"
         />
       </client-only>
-      <img :src="hero" alt="" />
     </div>
   </div>
 </template>
 
 <script>
 import DynamicMarkdown from '~/components/Markdown/DynamicMarkdown.vue';
-import ImageResponsive from '~/components/Image.vue';
 
 export default {
-  components: { DynamicMarkdown, ImageResponsive },
+  components: { DynamicMarkdown },
   async asyncData({ params, app }) {
     console.log(params.slug);
     const fileContent = await import(
@@ -62,14 +62,14 @@ export default {
       hero: attr.hero,
       id: attr.id,
       cardAlt: attr.cardAlt,
-      noMainImage: attr.noMainImage,
+      hasimage: attr.hasImage,
       description: attr.description,
       renderFunc: `(${fileContent.vue.render})`,
-      staticRenderFuncs: `[${fileContent.vue.staticRenderFns}]`,
-      image: {
-        main: attr.image && attr.image.main,
-        og: attr.image && attr.image.og
-      }
+      staticRenderFuncs: `[${fileContent.vue.staticRenderFns}]`
+      // image: {
+      //   main: attr.image && attr.image.main,
+      //   og: attr.image && attr.image.og
+      // }
     };
   },
 
@@ -78,9 +78,9 @@ export default {
   },
 
   computed: {
-    ogImage() {
-      return `${process.env.baseUrl}/images/blog/${this.id}/_thumbnail.jpg`;
-    },
+    // ogImage() {
+    //   return `${process.env.baseUrl}/images/blog/${this.id}/_thumbnail.jpg`;
+    // },
     pageTitle() {
       return this.title;
     },
@@ -101,28 +101,28 @@ export default {
         hreflang: this.showLocales[0].code
       };
     }
-  },
-
-  head() {
-    return {
-      title: this.title,
-      htmlAttrs: {
-        lang: this.$i18n.locale
-      },
-      meta: [
-        {
-          name: 'description',
-          property: 'og:description',
-          content: this.description,
-          hid: 'description'
-        },
-        { property: 'og:title', content: this.pageTitle },
-        { property: 'og:image', content: this.ogImage },
-        { name: 'twitter:description', content: this.description },
-        { name: 'twitter:image', content: this.ogImage }
-      ],
-      link: [this.hreflang]
-    };
   }
+
+  // head() {
+  //   return {
+  //     title: this.title,
+  //     htmlAttrs: {
+  //       lang: this.$i18n.locale
+  //     },
+  //     meta: [
+  //       {
+  //         name: 'description',
+  //         property: 'og:description',
+  //         content: this.description,
+  //         hid: 'description'
+  //       },
+  //       { property: 'og:title', content: this.pageTitle },
+  //       { property: 'og:image', content: this.ogImage },
+  //       { name: 'twitter:description', content: this.description },
+  //       { name: 'twitter:image', content: this.ogImage }
+  //     ],
+  //     link: [this.hreflang]
+  //   };
+  // }
 };
 </script>

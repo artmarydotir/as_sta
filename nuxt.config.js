@@ -147,10 +147,10 @@ export default {
   ],
   responsiveLoader: {
     name: 'images/[name]-[width].[ext]',
-    sizes: [320],
+    sizes: [320, 640, 768, 960, 1024, 1280],
     adapter: require('responsive-loader/sharp'),
-    placeholder: true,
-    quality: 45 // choose a lower value if you want to reduce filesize further
+    placeholder: false,
+    quality: 70
   },
   webfontloader: {
     custom: {
@@ -175,30 +175,20 @@ export default {
         vue.transformAssetUrls.img = ['data-src', 'src'];
         vue.transformAssetUrls.source = ['data-srcset', 'srcset'];
       }
-      config.module.rules.push(
-        {
-          test: /\.md$/,
-          loader: 'frontmatter-markdown-loader',
-          include: path.resolve(__dirname, 'contents'),
-          options: {
-            mode: [FMMode.VUE_COMPONENT, FMMode.VUE_RENDER_FUNCTIONS],
-            vue: {
-              root: 'markdown-body'
-            },
-            markdown(body) {
-              return md.render(body);
-            }
-          }
-        },
-        {
-          test: /\.(gif|svg)$/,
-          loader: 'url-loader',
-          query: {
-            limit: 1000,
-            name: 'img/[name].[hash:7].[ext]'
+      config.module.rules.push({
+        test: /\.md$/,
+        loader: 'frontmatter-markdown-loader',
+        include: path.resolve(__dirname, 'contents'),
+        options: {
+          mode: [FMMode.VUE_COMPONENT, FMMode.VUE_RENDER_FUNCTIONS],
+          vue: {
+            root: 'markdown-body'
+          },
+          markdown(body) {
+            return md.render(body);
           }
         }
-      );
+      });
       config.node = {
         fs: 'empty'
       };

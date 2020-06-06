@@ -2,8 +2,10 @@
 name: 'englishh'
 title: EEEEENNNNNNNNNNNNNNNNNNNN
 year: 28 May 2020
-hero: ''
 id: 'en-ipsum'
+hero: ''
+default: aasaam.png
+hasImage: false
 description: lorem
 ---
 

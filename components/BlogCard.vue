@@ -5,13 +5,24 @@
       <nuxt-link
         :to="localePath({ name: 'blog-slug', params: { slug: blog.name } })"
       >
-        <!-- :image-u-r-l="`~assets/images/${blog.hero}.jpg`" -->
-        <!-- :data-srcset="require(`${blog.hero}`).srcSet" -->
-        <!-- <ImageResponsive
-          :imageurl="imagechanger(blog.hero)"
-          :srcset="blog.hero"
-          :alt="blog.title"
-        /> -->
+        <div v-if="blog.hero">
+          <img
+            :data-src="require(`~/assets/images/blog/${blog.hero}`)"
+            :data-srcset="require(`~/assets/images/blog/${blog.hero}`).srcSet"
+            :alt="blog.title"
+            class="lazyload"
+          />
+        </div>
+        <div v-if="blog.hero == ''">
+          <img
+            :data-src="require(`~/assets/images/blog/${blog.default}`)"
+            :data-srcset="
+              require(`~/assets/images/blog/${blog.default}`).srcSet
+            "
+            :alt="blog.title"
+            class="lazyload"
+          />
+        </div>
         <h3 class="blog__title">
           {{ blog.title }}
         </h3>
@@ -22,29 +33,28 @@
       <span>
         {{ blog.year }}
       </span>
-      <!-- <img
-        :imageurl="imagechanger(`${blog.hero}`)"
-        :srcset="require(`~/assets/images/aurora.jpg`).srcSet"
-        :alt="blog.title"
-        class="lazyload"
-      /> -->
-      <!-- <img :srcset="require(`~/assets/images/${blog.hero}`).srcSet" /> -->
+      <span>
+        {{ img }}
+      </span>
     </li>
   </div>
 </template>
 
 <script>
-import ImageResponsive from '~/components/Image.vue';
-
 export default {
+  data() {
+    return {
+      img: this.blog.hero
+    };
+  },
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    ImageResponsive
+    // ImageResponsive
   },
   methods: {
-    imagechanger(a) {
-      return require(`~/assets/images/${a}`);
-    }
+    // imagechanger() {
+    //   return require(`~/${this.img}`);
+    // }
   },
   props: {
     // eslint-disable-next-line vue/require-default-prop
