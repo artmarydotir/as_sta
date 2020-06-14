@@ -1,41 +1,30 @@
 <template>
   <div class="container">
     <div>
-      <logo />
-      <h1 class="title">newgeneratorv2</h1>
+      <h1 class="title">AASAAM</h1>
       <h2 class="subtitle">{{ $t('home') }}</h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
+        <!-- <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           class="button--grey"
-        >
-          {{ $t('legalName') }}
-        </a>
+        >{{ $t('legalName') }}</a>-->
         <p>سلام من صفحه نخستم. لطفا برای نمایش مارک دان ازینجا برو</p>
         <!-- <nuxt-link to="pro" target="blank">show md</nuxt-link> -->
-        <a href="/pro" target="_blank">
-          Mark down
-        </a>
+        <a href="/pro" target="_blank">Mark down</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
 import faJSon from '~/locales/fa/info';
 import enJSon from '~/locales/en/info';
 import deJSon from '~/locales/de/info';
 import arJSon from '~/locales/ar/info';
 
 export default {
-  components: {
-    Logo
-  },
   computed: {
     structuredData() {
       if (this.$i18n.locale === 'en') {

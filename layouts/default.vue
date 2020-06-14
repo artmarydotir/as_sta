@@ -1,10 +1,19 @@
 <template>
   <div>
+    <LangLink />
+    <Menu />
     <nuxt />
   </div>
 </template>
 <script>
+import LangLink from '~/components/langlink.vue';
+import Menu from '~/components/menu.vue';
+
 export default {
+  components: {
+    LangLink,
+    Menu
+  },
   head() {
     const i18nSeo = this.$nuxtI18nSeo();
     return {
